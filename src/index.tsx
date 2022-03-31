@@ -1,12 +1,16 @@
 import React, { RefObject, useEffect, useRef } from "react"
 
-export type EqualizerProps = {
+export type AudioVisualizerProps = {
   audio: RefObject<HTMLAudioElement>
   height: number
   width: number
 }
 
-export default function Equalizer({ audio, height, width }: EqualizerProps) {
+export default function AudioVisualizer({
+  audio,
+  height,
+  width,
+}: AudioVisualizerProps) {
   const canvas = useRef<HTMLCanvasElement>()
 
   useEffect(() => {

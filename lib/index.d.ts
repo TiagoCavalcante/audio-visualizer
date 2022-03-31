@@ -1,10 +1,14 @@
-import { RefObject } from 'react';
+import { RefObject } from "react"
 
-declare type EqualizerProps = {
-    audio: RefObject<HTMLAudioElement>;
-    height: number;
-    width: number;
-};
-declare function Equalizer({ audio, height, width }: EqualizerProps): JSX.Element;
+declare type AudioVisualizerProps = {
+  audio: RefObject<HTMLAudioElement>
+  height: number
+  width: number
+}
+declare function AudioVisualizer({
+  audio,
+  height,
+  width,
+}: AudioVisualizerProps): JSX.Element
 
-export { EqualizerProps, Equalizer as default };
+export { AudioVisualizerProps, AudioVisualizer as default }

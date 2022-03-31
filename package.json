@@ -1,7 +1,7 @@
 {
-  "name": "react-equalizer",
+  "name": "@tiagotrindade/audio-visualizer",
   "version": "1.0.0",
-  "description": "2D React equalizer using canvas",
+  "description": "2D React audio visualizer using canvas",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -10,7 +10,9 @@
     "prepare": "husky install"
   },
   "keywords": [
+    "audio",
     "equalizer",
+    "visualizer",
     "react",
     "2d",
     "canvas"
