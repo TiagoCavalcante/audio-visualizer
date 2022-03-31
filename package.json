@@ -5,6 +5,10 @@
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TiagoCavalcante/audio-visualizer"
+  },
   "scripts": {
     "build": "rollup -c",
     "prepare": "husky install"
