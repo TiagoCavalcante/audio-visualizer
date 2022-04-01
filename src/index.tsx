@@ -3,10 +3,12 @@ import useMeasure from "react-use-measure"
 
 export type AudioVisualizerProps = HTMLProps<HTMLDivElement> & {
   audio: RefObject<HTMLAudioElement>
+  amplitude?: number
 }
 
 export default function AudioVisualizer({
   audio,
+  amplitude = 1,
   ...props
 }: AudioVisualizerProps) {
   const [container, bounds] = useMeasure()
@@ -39,7 +41,7 @@ export default function AudioVisualizer({
         const barPosition = i * 4
         const barWidth = 2
         // Negative so it goes to the top.
-        const barHeight = -(frequencyBinCountArray[i] / 2)
+        const barHeight = -(frequencyBinCountArray[i] / 2) * amplitude
 
         context.fillRect(
           barPosition,
@@ -59,7 +61,7 @@ export default function AudioVisualizer({
       analyser.disconnect()
       source.disconnect()
     }
-  }, [audio, canvas])
+  }, [amplitude, audio, canvas])
 
   return (
     <div ref={container} {...props}>

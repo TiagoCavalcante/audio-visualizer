@@ -8,9 +8,10 @@ Performant 2D audio visualizer for React projects.
 npm install @tiagotrindade/audio-visualizer
 ```
 
-audio-visualizer exports a component `AudioVisualizer` (as default), this component receives the following mandatory parameter:
+audio-visualizer exports a component `AudioVisualizer` (as default), this component receives the following parameters:
 
 - `audio` (type: `RefObject<HTMLAudioElement>`) — the element where the audio comes from
+- `amplitude` (type: `number`) — the amplitude of the volume. Default: 1
 
 ## Example
 
