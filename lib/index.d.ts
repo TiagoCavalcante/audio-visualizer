@@ -1,14 +1,11 @@
-import { RefObject } from "react"
+import { HTMLProps, RefObject } from "react"
 
-declare type AudioVisualizerProps = {
+declare type AudioVisualizerProps = HTMLProps<HTMLDivElement> & {
   audio: RefObject<HTMLAudioElement>
-  height: number
-  width: number
 }
 declare function AudioVisualizer({
   audio,
-  height,
-  width,
+  ...props
 }: AudioVisualizerProps): JSX.Element
 
 export { AudioVisualizerProps, AudioVisualizer as default }

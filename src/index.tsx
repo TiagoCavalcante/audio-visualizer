@@ -1,16 +1,15 @@
-import React, { RefObject, useEffect, useRef } from "react"
+import React, { HTMLProps, RefObject, useEffect, useRef } from "react"
+import useMeasure from "react-use-measure"
 
-export type AudioVisualizerProps = {
+export type AudioVisualizerProps = HTMLProps<HTMLDivElement> & {
   audio: RefObject<HTMLAudioElement>
-  height: number
-  width: number
 }
 
 export default function AudioVisualizer({
   audio,
-  height,
-  width,
+  ...props
 }: AudioVisualizerProps) {
+  const [container, bounds] = useMeasure()
   const canvas = useRef<HTMLCanvasElement>()
 
   useEffect(() => {
@@ -62,5 +61,9 @@ export default function AudioVisualizer({
     }
   }, [audio, canvas])
 
-  return <canvas ref={canvas} height={height} width={width} />
+  return (
+    <div ref={container} {...props}>
+      <canvas ref={canvas} height={bounds.height} width={bounds.width} />
+    </div>
+  )
 }
