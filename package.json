@@ -1,6 +1,6 @@
 {
   "name": "@tiagotrindade/audio-visualizer",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "2D React audio visualizer using canvas",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",

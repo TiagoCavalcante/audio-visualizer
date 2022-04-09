@@ -6,7 +6,7 @@ export type AudioVisualizerProps = HTMLProps<HTMLDivElement> & {
   amplitude?: number
 }
 
-export default function AudioVisualizer({
+function RealAudioVisualizer({
   audio,
   amplitude = 1,
   ...props
@@ -20,7 +20,9 @@ export default function AudioVisualizer({
 
     let animationFrame: number
 
-    const audioContext = new AudioContext()
+    const audioContext = new (window.AudioContext ||
+      (window as any).webkitAudioContext)()
+
     const analyser = audioContext.createAnalyser()
     const context = canvas.current.getContext("2d")
     const source = audioContext.createMediaElementSource(audio.current)
@@ -37,7 +39,7 @@ export default function AudioVisualizer({
       context.clearRect(0, 0, canvas.current.width, canvas.current.height)
       context.fillStyle = "#ffffff"
 
-      for (var i = 0; i < barCount; i++) {
+      for (let i = 0; i < barCount; i++) {
         const barPosition = i * 4
         const barWidth = 2
         // Negative so it goes to the top.
@@ -68,4 +70,13 @@ export default function AudioVisualizer({
       <canvas ref={canvas} height={bounds.height} width={bounds.width} />
     </div>
   )
+}
+
+// This is an wrapper to RealAudioVisualizer.
+export default function AudioVisualizer(props: AudioVisualizerProps) {
+  if (window.AudioContext || (window as any).webkitAudioContext) {
+    return <RealAudioVisualizer {...props} />
+  } else {
+    return <>Your browser doesn&apos;t support audio contexts</>
+  }
 }
